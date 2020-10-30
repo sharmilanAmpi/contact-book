@@ -48,6 +48,7 @@ export default function Reducer(state = initialContact, action) {
       return {...state, isFetching: true, selectedContact: payload, getContactError: false};
     case GET_CONTACT_FAILED:
       return {...state, isFetching: true, selectedContact: {}, getContactError: payload};
-    default: return state;
+    default:
+      return state;
   }
 }

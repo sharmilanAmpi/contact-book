@@ -21,6 +21,7 @@ export default function Reducer(state = inintialState, action) {
       return {...state, isLoading: false, profile: payload, error: false};
     case SELECT_PROFILE_FAILED:
       return {...state, isLoading: false, profile: {}, error: payload};
-    default: return state;
+    default:
+      return state;
   }
 }

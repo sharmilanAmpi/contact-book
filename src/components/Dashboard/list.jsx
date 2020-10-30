@@ -14,14 +14,15 @@ import { selectProfile } from '../../actions/profile.actions';
 
 const { Search } = Input;
 
-const onSearch = () => {}
-
 const List = (props) => {
   const {
     fetchList,
     list,
     selectProfile,
   } = props;
+
+  // For the global searhc on contacts
+  const onSearch = () => {}
 
   const onSelect = (id) => {
     selectProfile(id);
@@ -79,7 +80,7 @@ const List = (props) => {
       <Table
         dataSource={list}
         columns={columns} 
-        pagination={{total: 2 }}
+        pagination={{total: 5 }}
       />
     </Card>
   )

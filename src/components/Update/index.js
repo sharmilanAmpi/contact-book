@@ -1,11 +1,12 @@
 import React from 'react';
 import { Card, Row, Col, Avatar, PageHeader } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import Form from '../Create/Form';
+import ContactForm from '../shared/Form';
 import { withRouter } from 'react-router';
 
 const Update = (props) => {
-  const { history: { goBack}, contact } = props;
+  const { history: { goBack} } = props;
+  
   return (
     <PageHeader
     className="site-page-header"
@@ -22,7 +23,7 @@ const Update = (props) => {
             />
           </Col>
           <Col span={18}>
-            <Form {...{contact}}/>
+            <ContactForm />
           </Col>
         </Row>
       </Card>

@@ -1,6 +1,9 @@
 import createConstants from '../constants/create.costants';
 import updateConstants from '../constants/update.constats';
-import { createContact, updateContact, getContact as fetchContact } from "../services/contactServices";
+import {
+  createContact, updateContact, getContact as fetchContact,
+} from "../services/contactServices";
+
 const {
   CREATE_CONTACT_REQUEST,
   CREATE_CONTACT_SUCCESS,

@@ -12,7 +12,7 @@ const initiallState = {
 };
 
 export default function Reducer(state = initiallState, action) {
-  const {type, payload} = action;
+  const { type, payload } = action;
 
   switch(type) {
     case FETCH_CONTACT_LIST_REQUEST: 
