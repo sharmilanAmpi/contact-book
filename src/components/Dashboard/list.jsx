@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import moment from 'moment';
 import {
   Card, Row, Col, Avatar, Table, Button, Input
 } from 'antd';
@@ -46,6 +47,7 @@ const List = (props) => {
       title: 'Date of Birth',
       dataIndex: 'date_of_birth',
       key: 'date_of_birth',
+      render: (date) => moment(date, 'L').format('LL')
     },
     {
       title: 'Phone',

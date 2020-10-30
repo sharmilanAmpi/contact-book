@@ -5,12 +5,13 @@ import {
 } from "react-router-dom";
 import Dashboard from './components/Dashboard';
 import Create from './components/Create';
+import Update from './components/Update';
 
 export default function Routes(props) {
   return (
     <Switch>
       <Route path="/:contactId/edit">
-        <Create {...props}/>
+        <Update {...props}/>
       </Route>
       <Route path="/create">
         <Create />

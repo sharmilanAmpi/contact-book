@@ -6,6 +6,8 @@ import {
   UserOutlined, EditOutlined, DeleteOutlined,
 } from '@ant-design/icons';
 import { connect } from 'react-redux';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 const { Title } = Typography;
 
@@ -13,6 +15,7 @@ const { Title } = Typography;
 const Profile = (props) => {
   const {
     profile: {
+      id,
       first_name,
       last_name,
       date_of_birth,
@@ -31,7 +34,7 @@ const Profile = (props) => {
         style={{marginBottom: 20}}
       />
       <Title level={3}>{[first_name, last_name].join(' ')}</Title>
-      <Title level={4}>{date_of_birth}</Title>
+      <Title level={4}>{moment(date_of_birth, 'L').format('LL')}</Title>
       <Divider></Divider>
       <Descriptions
           size="small"
@@ -49,13 +52,15 @@ const Profile = (props) => {
       <Divider></Divider>
       <Row>
         <Col span={4}>
-          <Button
-            icon={<EditOutlined />}
-            type="primary"
-            block
-          >
-            Edit
-          </Button>
+          <Link to={`/${id}/edit`}>
+            <Button
+              icon={<EditOutlined />}
+              type="primary"
+              block
+            >
+              Edit
+            </Button>
+          </Link>
         </Col>
         <Col span={4} offset={16}>
           <Button

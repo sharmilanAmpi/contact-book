@@ -1,16 +1,16 @@
 import React from 'react';
 import { Card, Row, Col, Avatar, PageHeader } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import Form from './Form';
+import Form from '../Create/Form';
 import { withRouter } from 'react-router';
 
-const Create = (props) => {
-  const { history: { goBack} } = props;
+const Update = (props) => {
+  const { history: { goBack}, contact } = props;
   return (
     <PageHeader
     className="site-page-header"
     onBack={() => goBack()}
-    title="Create Contact"
+    title="Update Contact"
     >
       <Card>
         <Row>
@@ -22,7 +22,7 @@ const Create = (props) => {
             />
           </Col>
           <Col span={18}>
-            <Form />
+            <Form {...{contact}}/>
           </Col>
         </Row>
       </Card>
@@ -30,4 +30,4 @@ const Create = (props) => {
   )
 }
 
-export default withRouter(Create);
+export default withRouter(Update);
