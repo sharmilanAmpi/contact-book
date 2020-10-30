@@ -3,14 +3,17 @@ import { Input, Button, Select, Form, DatePicker, Divider, Upload } from 'antd';
 import { SaveOutlined, UploadOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import { withRouter } from 'react-router';
 
 import config from '../../config';
-import { create as createContact, update as updateContact, getContact } from '../../actions/contact.actions';
-import { withRouter } from 'react-router';
+import {
+  create as createContact, update as updateContact, getContact,
+} from '../../actions/contact.actions';
+
 const { Option } = Select;
 const { countryCodes } = config;
 
-const CreateForm = (props) => {
+const ContactForm = (props) => {
   const {
     createContact,
     updateContact,
@@ -25,9 +28,9 @@ const CreateForm = (props) => {
   }, [contactId]);
 
   useEffect(() => {
-    console.log(selectedContact)
     if (selectedContact && selectedContact.id) {
       const {date_of_birth, phone} = selectedContact;
+      
       form.setFieldsValue({
         ...selectedContact,
         date_of_birth: moment(date_of_birth, 'L'),
@@ -123,4 +126,4 @@ const mapActions = {
   getContact
 }
 
-export default withRouter(connect(mapState, mapActions)(CreateForm));
+export default withRouter(connect(mapState, mapActions)(ContactForm));

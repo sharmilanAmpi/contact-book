@@ -35,7 +35,9 @@ const Profile = (props) => {
       />
       <Title level={3}>{[first_name, last_name].join(' ')}</Title>
       <Title level={4}>{moment(date_of_birth, 'L').format('LL')}</Title>
+      
       <Divider></Divider>
+      
       <Descriptions
           size="small"
           layout="vertical"
@@ -49,7 +51,9 @@ const Profile = (props) => {
           <Descriptions.Item label="Email">{email}</Descriptions.Item>
           <Descriptions.Item label="Address">{address}</Descriptions.Item>
       </Descriptions>
+      
       <Divider></Divider>
+      
       <Row>
         <Col span={4}>
           <Link to={`/${id}/edit`}>

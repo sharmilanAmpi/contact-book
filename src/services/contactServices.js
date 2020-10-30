@@ -1,52 +1,55 @@
 import {v4 as uuid} from "uuid"; 
 
-let contacts = [
-  {
-    id: 'DF34WF',
-    first_name: 'Mike',
-    last_name: 'Bostan',
-    date_of_birth: '10/30/1820',
-    phone: '+94 773066934',
-    email: 'arm_hadb@gmail.com',
-    address: '1424  Harron Drive, Baltimore, Maryland, 21202',
-  },
-  {
-    id: 'KHJ68H',
-    first_name: 'John',
-    last_name: 'Corner',
-    date_of_birth: '08/10/1910',
-    phone: '+94 773425775',
-    email: 'arm_hadb@gmail.com',
-    address: '1424  Harron Drive, Baltimore, Maryland, 21202',
-  },
-  {
-    id: 'YA97KA',
-    first_name: 'Mike',
-    last_name: 'Bostan',
-    date_of_birth: '03/05/1850',
-    phone: '+94 773066934',
-    email: 'arm_hadb@gmail.com',
-    address: '1424  Harron Drive, Baltimore, Maryland, 21202',
-  },
-  {
-    id: '657HBK',
-    first_name: 'John',
-    last_name: 'Corner',
-    date_of_birth: '02/03/1987',
-    phone: '+94 773425775',
-    email: 'arm_hadb@gmail.com',
-    address: '1424  Harron Drive, Baltimore, Maryland, 21202'
-  },
-  {
-    id: '56TGJH',
-    first_name: 'Mike',
-    last_name: 'Bostan',
-    date_of_birth: '07/04/1897',
-    phone: '+94 773066934',
-    email: 'arm_hadb@gmail.com',
-    address: '1424  Harron Drive, Baltimore, Maryland, 21202'
-  },
-];
+// TODO Dummy date, need to remove and move to browser storage
+let contacts = [{
+  id: 'DF34WF-KHJ68H-DF34WF-DF34WF',
+  first_name: "Enoch",
+  last_name: "Dane",
+  email: "edane0@chicagotribune.com",
+  date_of_birth: "11/03/1990",
+  phone: '+94 862533522',
+  address: "00231 Eagan Parkway",
+}, {
+  id: 'KHJ68H-YA97KA-YA97KA-YA97KA',
+  first_name: "Neils",
+  last_name: "Caffin",
+  email: "ncaffin1@sourceforge.net",
+  date_of_birth: "10/06/1987",
+  phone: '+94 773425775',
+  address: "48239 Toban Street"
+}, {
+  id: 'KHJ68H-KHJ68H-YA97KA-YA97KA',
+  first_name: "Evin",
+  last_name: "Lille",
+  email: "elille2@biblegateway.com",
+  date_of_birth: "11/01/1989",
+  phone: '+94 4734325775',
+  address: "7163 Hayes Drive"
+}, {
+  id: '657HBK-657HBK-657HBK-657HBK',
+  first_name: "Hodge",
+  last_name: "Fitzroy",
+  email: "hfitzroy3@exblog.jp",
+  date_of_birth: "07/07/1989",
+  phone: '+94 773425775',
+  address: "96669 Walton Way"
+}, {
+  id: '56TGJH-56TGJH-56TGJH-56TGJH',
+  first_name: "Humfrid",
+  last_name: "Aspinell",
+  email: "haspinell4@prweb.com",
+  date_of_birth: "09/04/1986",
+  phone: '+94 473026951',
+  address: "1721 Pankratz Point"
+}, {
+  id: '56TGJH-56TGJH-56TGJH-56TGJH',
+  first_name: "Humfrid",
+  last_name: "Aspinell",
+  email: "haspinell4@prweb.com",
+  date_of_birth: "09/04/1986",
+  phone: '+94 473026951',
+  address: "1721 Pankratz Point"
+}];
 
 export function fetchContacts() {
   return contacts;

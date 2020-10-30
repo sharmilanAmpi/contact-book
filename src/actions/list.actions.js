@@ -1,6 +1,7 @@
 import listContants from '../constants/list.constats';
 import { fetchContacts } from '../services/contactServices';
 import { selectProfile } from './profile.actions';
+
 const {
   FETCH_CONTACT_LIST_REQUEST,
   FETCH_CONTACT_LIST_SUCCESS,
@@ -14,9 +15,11 @@ export function fetchList() {
     try {
       const payload = fetchContacts();
       dispatch({type: FETCH_CONTACT_LIST_SUCCESS, payload})
-      // initially First contact will be consider as the selected profile
+      // initially, First contact will be consider as the selected profile
       const selectedContact = payload.length > 0 ? payload[0].id : null;
-      dispatch(selectProfile(selectedContact));
+      if (selectedContact) {
+        dispatch(selectProfile(selectedContact));
+      }
     } catch (error) {
       dispatch({type: FETCH_CONTACT_LIST_FAILED});
     }
