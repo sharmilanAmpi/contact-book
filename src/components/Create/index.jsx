@@ -10,8 +10,7 @@ const Create = (props) => {
     <PageHeader
     className="site-page-header"
     onBack={() => goBack()}
-    title="Back"
-    subTitle="List view"
+    title="Create Contact"
     >
       <Card>
         <Row>
