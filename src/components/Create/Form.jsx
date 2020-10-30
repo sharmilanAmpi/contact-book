@@ -1,28 +1,50 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Input, Button, Select, Form, DatePicker, Divider, Upload } from 'antd';
 import { SaveOutlined, UploadOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import config from '../../config';
-import { create as createContact, update as updateContact } from '../../actions/contact.actions';
+import { create as createContact, update as updateContact, getContact } from '../../actions/contact.actions';
+import { withRouter } from 'react-router';
 const { Option } = Select;
 const { countryCodes } = config;
 
 const CreateForm = (props) => {
-  console.log(props);
   const {
-    createContact
+    createContact,
+    updateContact,
+    getContact,
+    selectedContact,
+    match: { params: {contactId}}
   } = props;
   const [form] = Form.useForm();
 
+  useEffect(() => {
+    getContact(contactId);
+  }, [contactId]);
+
+  useEffect(() => {
+    console.log(selectedContact)
+    if (selectedContact && selectedContact.id) {
+      const {date_of_birth, phone} = selectedContact;
+      form.setFieldsValue({
+        ...selectedContact,
+        date_of_birth: moment(date_of_birth, 'L'),
+        prefix: phone.split(" ")[0],
+        phone: phone.split(" ")[1]
+      });
+    }
+  }, [selectedContact]);
+
   const onFinish = (values) => {
-    console.log(values);
     const {phone, prefix, date_of_birth} = values;
-    createContact({
+    const formData = {
       ...values,
       phone: `${prefix} ${phone}`,
       date_of_birth: date_of_birth.format('L')
-    });
+    }
+    contactId ? updateContact(contactId, formData) : createContact(formData)
   }
 
   const prefixSelector = (
@@ -87,15 +109,18 @@ const mapState = ({contact: {
   isUpdating,
   updateError,
   createError,
+  selectedContact
 }}) => ({
   isCreating,
   isUpdating,
   updateError,
   createError,
+  selectedContact,
 });
 const mapActions = {
   createContact,
   updateContact,
+  getContact
 }
 
-export default connect(mapState, mapActions)(CreateForm);
+export default withRouter(connect(mapState, mapActions)(CreateForm));

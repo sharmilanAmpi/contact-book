@@ -7,6 +7,7 @@ import {
 } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 const { Title } = Typography;
 
@@ -14,6 +15,7 @@ const { Title } = Typography;
 const Profile = (props) => {
   const {
     profile: {
+      id,
       first_name,
       last_name,
       date_of_birth,
@@ -50,13 +52,15 @@ const Profile = (props) => {
       <Divider></Divider>
       <Row>
         <Col span={4}>
-          <Button
-            icon={<EditOutlined />}
-            type="primary"
-            block
-          >
-            Edit
-          </Button>
+          <Link to={`/${id}/edit`}>
+            <Button
+              icon={<EditOutlined />}
+              type="primary"
+              block
+            >
+              Edit
+            </Button>
+          </Link>
         </Col>
         <Col span={4} offset={16}>
           <Button

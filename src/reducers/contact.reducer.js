@@ -10,6 +10,9 @@ const {
   UPDATE_CONTACT_REQUEST,
   UPDATE_CONTACT_SUCCESS,
   UPDATE_CONTACT_FAILED,
+  GET_CONTACT_REQUEST,
+  GET_CONTACT_SUCCESS,
+  GET_CONTACT_FAILED,
 } = updateConstants;
 
 const initialContact = {
@@ -17,7 +20,10 @@ const initialContact = {
   createError: false,
   contact: {},
   isUpdating: false,
-  updateError: false
+  updateError: false,
+  isFetching: false,
+  selectedContact: {},
+  getContactError: false,
 };
 
 export default function Reducer(state = initialContact, action) {
@@ -36,6 +42,12 @@ export default function Reducer(state = initialContact, action) {
       return {...state, isUpdating: false, contact: payload, updateError: false};
     case UPDATE_CONTACT_FAILED:
       return {...state, isUpdating: false, contact: {}, updateError: payload};
+    case GET_CONTACT_REQUEST:
+      return {...state, isFetching: true, selectedContact: {}, getContactError: false};
+    case GET_CONTACT_SUCCESS:
+      return {...state, isFetching: true, selectedContact: payload, getContactError: false};
+    case GET_CONTACT_FAILED:
+      return {...state, isFetching: true, selectedContact: {}, getContactError: payload};
     default: return state;
   }
 }

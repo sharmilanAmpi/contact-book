@@ -1,6 +1,6 @@
 import {v4 as uuid} from "uuid"; 
 
-const contacts = [
+let contacts = [
   {
     id: 'DF34WF',
     first_name: 'Mike',
@@ -64,6 +64,10 @@ export function createContact(contact) {
 }
 
 export function updateContact(id, contact) {
-  contacts.map(c => c.id === id ? contact : c);
+  contacts = contacts.map(c => c.id === id ? {...contact, id} : c);
   return contact;
+}
+
+export function getContact(contactId) {
+  return contacts.find(({id}) => id === contactId);
 }
