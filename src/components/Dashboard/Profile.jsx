@@ -5,13 +5,21 @@ import {
 import {
   UserOutlined, EditOutlined, DeleteOutlined,
 } from '@ant-design/icons';
+import { connect } from 'react-redux';
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 
-export default function Profile(props) {
+const Profile = (props) => {
   const {
-    profile
+    profile: {
+      first_name,
+      last_name,
+      date_of_birth,
+      address,
+      email,
+      phone,
+    }
   } = props;
 
   return (
@@ -22,8 +30,8 @@ export default function Profile(props) {
         icon={<UserOutlined />}  
         style={{marginBottom: 20}}
       />
-      <Title level={3}>John Cornar</Title>
-      <Title level={4}>25th Ociober 2942</Title>
+      <Title level={3}>{[first_name, last_name].join(' ')}</Title>
+      <Title level={4}>{date_of_birth}</Title>
       <Divider></Divider>
       <Descriptions
           size="small"
@@ -34,9 +42,9 @@ export default function Profile(props) {
           title="Contact Details"
           style={{ marginBottom: 10, textAlign: 'left' }}
           >
-          <Descriptions.Item label="Phone Numeer">+94 77 3066 934</Descriptions.Item>
-          <Descriptions.Item label="Email">sdfdsfdfds@ascsadas.asd</Descriptions.Item>
-          <Descriptions.Item label="Address">sdfdsf, sdfsdfsdf, sdf, sdfdsfdfds@ascsadas.asd</Descriptions.Item>
+          <Descriptions.Item label="Phone Numeer">{phone}</Descriptions.Item>
+          <Descriptions.Item label="Email">{email}</Descriptions.Item>
+          <Descriptions.Item label="Address">{address}</Descriptions.Item>
       </Descriptions>
       <Divider></Divider>
       <Row>
@@ -61,4 +69,11 @@ export default function Profile(props) {
       </Row>
     </Card>
   );
-}
+};
+
+const mapState = ({profile: {
+  profile
+}}) => {
+  return { profile };
+};
+export default connect(mapState, {})(Profile);

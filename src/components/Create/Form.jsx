@@ -3,7 +3,7 @@ import { Input, Button, Select, Form, DatePicker, Divider, Upload } from 'antd';
 import { SaveOutlined, UploadOutlined } from '@ant-design/icons';
 const { Option } = Select;
 
-export default () => {
+export default function CreateForm() {
   const [form] = Form.useForm();
 
   const prefixSelector = (
