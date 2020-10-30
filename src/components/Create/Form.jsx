@@ -1,16 +1,34 @@
 import React from 'react';
 import { Input, Button, Select, Form, DatePicker, Divider, Upload } from 'antd';
 import { SaveOutlined, UploadOutlined } from '@ant-design/icons';
-const { Option } = Select;
+import { connect } from 'react-redux';
 
-export default function CreateForm() {
+import config from '../../config';
+import { create as createContact, update as updateContact } from '../../actions/contact.actions';
+const { Option } = Select;
+const { countryCodes } = config;
+
+const CreateForm = (props) => {
+  console.log(props);
+  const {
+    createContact
+  } = props;
   const [form] = Form.useForm();
+
+  const onFinish = (values) => {
+    console.log(values);
+    const {phone, prefix, date_of_birth} = values;
+    createContact({
+      ...values,
+      phone: `${prefix} ${phone}`,
+      date_of_birth: date_of_birth.format('L')
+    });
+  }
 
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
-      <Select defaultValue="94" style={{ width: 70 }}>
-        <Option value="94">+94</Option>
-        <Option value="87">+87</Option>
+      <Select style={{ width: 70 }}>
+        {countryCodes.map(code => <Option value={`+${code}`}>{`+${code}`}</Option>)}
       </Select>
     </Form.Item>
   );
@@ -20,20 +38,21 @@ export default function CreateForm() {
       name="contactForm"
       form={form}
       layout="vertical"
+      onFinish={onFinish}
     >
-      <Form.Item name="firstName" label="First Name" rules={[{ required: true }]}>
+      <Form.Item name="first_name" label="First Name" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
-      <Form.Item name="lastName" label="Last Name" rules={[{ required: true }]}>
+      <Form.Item name="last_name" label="Last Name" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
-      <Form.Item name='emailAddress' label="Email" rules={[{ type: 'email', required: true }]}>
+      <Form.Item name='email' label="Email" rules={[{ type: 'email', required: true }]}>
         <Input />
       </Form.Item>
       <Form.Item name="date_of_birth" label="Date of Birth">
         <DatePicker style={{width: '100%'}} />
       </Form.Item>
-      <Form.Item name="phoneNumber" label="Phone Number" rules={[{ required: true }]}>
+      <Form.Item name="phone" label="Phone Number" rules={[{ required: true }]}>
         <Input addonBefore={prefixSelector}/>
       </Form.Item>
       <Form.Item name="address" label="Address" rules={[{ required: true }]}>
@@ -61,4 +80,22 @@ export default function CreateForm() {
       </Form.Item>
     </Form>
   )
+};
+
+const mapState = ({contact: {
+  isCreating,
+  isUpdating,
+  updateError,
+  createError,
+}}) => ({
+  isCreating,
+  isUpdating,
+  updateError,
+  createError,
+});
+const mapActions = {
+  createContact,
+  updateContact,
 }
+
+export default connect(mapState, mapActions)(CreateForm);

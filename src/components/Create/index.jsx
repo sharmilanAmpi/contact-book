@@ -1,12 +1,18 @@
 import React from 'react';
-import { Card, Row, Col, Avatar } from 'antd';
+import { Card, Row, Col, Avatar, PageHeader } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import Form from './Form';
+import { withRouter } from 'react-router';
 
-export default function Create() {
-  
+const Create = (props) => {
+  const { history: { goBack} } = props;
   return (
-    <>
+    <PageHeader
+    className="site-page-header"
+    onBack={() => goBack()}
+    title="Back"
+    subTitle="List view"
+    >
       <Card>
         <Row>
           <Col span={6} style={{textAlign: "center"}}>
@@ -21,6 +27,8 @@ export default function Create() {
           </Col>
         </Row>
       </Card>
-    </>
+    </PageHeader>
   )
 }
+
+export default withRouter(Create);

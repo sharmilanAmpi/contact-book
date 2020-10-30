@@ -6,6 +6,7 @@ import {
   UserOutlined, EditOutlined, DeleteOutlined,
 } from '@ant-design/icons';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 const { Title } = Typography;
 
@@ -31,7 +32,7 @@ const Profile = (props) => {
         style={{marginBottom: 20}}
       />
       <Title level={3}>{[first_name, last_name].join(' ')}</Title>
-      <Title level={4}>{date_of_birth}</Title>
+      <Title level={4}>{moment(date_of_birth, 'L').format('LL')}</Title>
       <Divider></Divider>
       <Descriptions
           size="small"
