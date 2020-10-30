@@ -1,10 +1,9 @@
 import React from "react";
 import {
   BrowserRouter as Router,
-  Link
 } from "react-router-dom";
 import Routes from './Routes'
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
 
 const { Header, Content } = Layout;
 

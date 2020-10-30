@@ -6,16 +6,18 @@ import {
 import Dashboard from './components/Dashboard';
 import Create from './components/Create';
 
-export default () => (
-  <Switch>
-    <Route path="/:contactId/edit">
-      <Create />
-    </Route>
-    <Route path="/create">
-      <Create />
-    </Route>
-    <Route path="/">
-      <Dashboard />
-    </Route>
-  </Switch>
-);
+export default function Routes(props) {
+  return (
+    <Switch>
+      <Route path="/:contactId/edit">
+        <Create {...props}/>
+      </Route>
+      <Route path="/create">
+        <Create />
+      </Route>
+      <Route path="/">
+        <Dashboard />
+      </Route>
+    </Switch>
+  )
+};

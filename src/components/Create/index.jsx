@@ -3,7 +3,7 @@ import { Card, Row, Col, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import Form from './Form';
 
-export default () => {
+export default function Create() {
   
   return (
     <>

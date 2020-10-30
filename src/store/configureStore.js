@@ -30,7 +30,7 @@ const composedEnhacers = compose(
 
 
 const store = createStore(
-    rootReducer,
+    rootReducer(),
     initialState,
     composedEnhacers
 );
